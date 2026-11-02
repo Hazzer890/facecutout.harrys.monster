@@ -1,0 +1,30 @@
+.intro { max-width: 60ch; margin: 0 0 1.5rem; color: var(--ink-soft); }
+.intro h1 { font-size: clamp(1.6rem, 4vw, 2.2rem); margin: 0 0 .4rem; color: var(--ink); }
+
+.dropzone {
+  border: 2px dashed var(--glass-brd);
+  border-radius: var(--radius);
+  padding: clamp(24px, 5vw, 44px);
+  text-align: center;
+  transition: border-color .2s var(--ease), background .2s var(--ease);
+}
+.dropzone.is-over { border-color: var(--accent); background: var(--surface-2); }
+.dropzone-hint { color: var(--ink-mute); font-size: .85rem; margin-top: .5rem; }
+
+.cards { display: grid; gap: 1.2rem; margin-top: 1.5rem; }
+.card { padding: clamp(18px, 3vw, 28px); }
+.card-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: .4rem .8rem; }
+.card-name { font-weight: 600; word-break: break-all; }
+.card-remove { margin-left: auto; }
+.card-summary { margin: .6rem 0 0; color: var(--ink-soft); }
+.card-summary:empty, .card-error:empty { display: none; }
+.card-error { margin: .8rem 0 0; color: var(--danger); font-size: .9rem; }
+
+.faces { display: flex; flex-wrap: wrap; gap: 1.2rem; margin-top: 1rem; }
+.faces:empty { display: none; }
+.faces figure { display: grid; justify-items: center; gap: .8rem; margin: 0; }
+/* Checkerboard so the transparent background reads as transparent. */
+.faces canvas {
+  max-width: min(240px, 100%); height: auto; border-radius: 10px;
+  background: repeating-conic-gradient(rgba(127,127,127,.18) 0 25%, transparent 0 50%) 0 0 / 16px 16px;
+}

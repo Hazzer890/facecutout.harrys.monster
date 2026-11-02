@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Cut the head out of a photo and download it as a PNG with a transparent background. Runs in your browser, nothing is uploaded.">
+  <meta name="theme-color" content="#f5f7fc">
+  <link rel="canonical" href="https://facecutout.harrys.monster/">
+  <title>Face cutout | Harry Cassidy</title>
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 18'><path fill='%233b5bdb' d='M12 11.19c5.65 0 8.61-6.28 5.98-10.64-.17-.29.15-.69.43-.51C21.77 2.19 24 5.99 24 10.26c0 2.91-1 5.5-2.76 7.58l-3.11-1.07c.6-.56 1.12-1.2 1.55-1.9.98-1.6-1.22-2.59-2.92-1.78-1.44.69-3.05 1.08-4.75 1.08s-3.31-.39-4.75-1.08c-1.69-.81-3.89.17-2.92 1.78.42.69.94 1.33 1.55 1.9l-3.13 1.08C1 15.76 0 13.18 0 10.26 0 5.99 2.23 2.19 5.59.04c.28-.18.6.22.43.51C3.39 4.9 6.35 11.19 12 11.19z'/></svg>">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/app.css">
+<script>
+(function(){var A='https://analytics.harrys.monster/e',v;
+try{v=localStorage.getItem('_aid')||crypto.randomUUID();localStorage.setItem('_aid',v)}catch(e){v='anon'}
+var t0=Date.now(),ms=0,lcp=0,cls=0,de=document.documentElement;
+function send(o){o.vid=v;o.site=location.host;o.path=location.pathname+location.hash;
+try{navigator.sendBeacon(A,JSON.stringify(o))}catch(e){}}
+function pv(){send({t:'pv',ref:document.referrer,q:location.search,ti:document.title,
+lang:navigator.language,tz:Intl.DateTimeFormat().resolvedOptions().timeZone,
+sw:screen.width,sh:screen.height,w:innerWidth,h:innerHeight,dw:de.scrollWidth,dh:de.scrollHeight})}
+pv();addEventListener('hashchange',pv);
+try{new PerformanceObserver(function(l){var e=l.getEntries();lcp=Math.round(e[e.length-1].startTime)}).observe({type:'largest-contentful-paint',buffered:true});
+new PerformanceObserver(function(l){l.getEntries().forEach(function(e){if(!e.hadRecentInput)cls+=e.value})}).observe({type:'layout-shift',buffered:true})}catch(e){}
+addEventListener('scroll',function(){var s=(scrollY+innerHeight)/de.scrollHeight*100;if(s>ms)ms=s},{passive:true});
+addEventListener('click',function(e){var el=e.target.closest?e.target.closest('a,button,[data-track]')||e.target:e.target;
+var cn=typeof el.className=='string'&&el.className.trim()?'.'+el.className.trim().split(/\s+/).slice(0,2).join('.'):'';
+var o={t:'click',x:e.pageX,y:e.pageY,w:innerWidth,dw:de.scrollWidth,dh:de.scrollHeight,
+sel:(el.tagName.toLowerCase()+(el.id?'#'+el.id:cn)).slice(0,140)};
+var a=e.target.closest&&e.target.closest('a');if(a&&a.host&&a.host!=location.host)o.out=a.href;
+send(o)},true);
+addEventListener('error',function(e){send({t:'error',name:String(e.message||'error').slice(0,200),
+props:{src:String(e.filename||'').slice(0,200),line:e.lineno,col:e.colno}})});
+addEventListener('visibilitychange',function(){if(document.visibilityState=='hidden'){var n=performance.getEntriesByType('navigation')[0];
+send({t:'leave',dur:Math.round((Date.now()-t0)/1e3),scroll:Math.round(Math.min(ms,100)),
+lcp:lcp,cls:Math.round(cls*1000),load:n&&n.loadEventEnd?Math.round(n.loadEventEnd):0})}});
+window.track=function(n,p){send({t:'custom',name:n,props:p})};
+})();
+</script></head>
+<body>
+  <a href="#dropzone" class="skip-link">Skip to file picker</a>
+
+  <header class="header">
+    <nav class="nav" aria-label="Primary">
+      <a href="https://harrys.monster" class="nav-logo" aria-label="Harry Cassidy, home"><svg class="nav-mark" viewBox="0 0 24 18" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12 11.19c5.65 0 8.61-6.28 5.98-10.64-.17-.29.15-.69.43-.51C21.77 2.19 24 5.99 24 10.26c0 2.91-1 5.5-2.76 7.58l-3.11-1.07c.6-.56 1.12-1.2 1.55-1.9.98-1.6-1.22-2.59-2.92-1.78-1.44.69-3.05 1.08-4.75 1.08s-3.31-.39-4.75-1.08c-1.69-.81-3.89.17-2.92 1.78.42.69.94 1.33 1.55 1.9l-3.13 1.08C1 15.76 0 13.18 0 10.26 0 5.99 2.23 2.19 5.59.04c.28-.18.6.22.43.51C3.39 4.9 6.35 11.19 12 11.19z"/></svg></a>
+      <span class="nav-title">Face cutout</span>
+    </nav>
+  </header>
+
+  <main class="app container">
+    <div class="intro">
+      <h1>Cut a head out of a photo</h1>
+      <p>Drop a photo and every head in it is cut out, hair and all, ready to download as a PNG with a transparent background.</p>
+    </div>
+
+    <div class="dropzone glass" id="dropzone">
+      <input type="file" id="file-input" accept="image/*" multiple hidden>
+      <p>Drop photos here, paste one, or <button type="button" class="btn btn-ghost" id="browse">browse</button></p>
+      <p class="dropzone-hint">JPEG, PNG and WebP. The first photo takes a few seconds while the models load.</p>
+    </div>
+
+    <div class="cards" id="cards" aria-live="polite"></div>
+  </main>
+
+  <template id="card-tpl">
+    <section class="card glass">
+      <div class="card-head">
+        <span class="card-name"></span>
+        <button type="button" class="btn btn-ghost card-remove">Remove</button>
+      </div>
+      <p class="card-summary">Finding heads…</p>
+      <div class="faces"></div>
+      <p class="card-error" role="alert"></p>
+    </section>
+  </template>
+
+  <footer class="footer">
+    <div class="container">
+      <p>Everything runs in your browser. No file leaves your device.</p>
+      <p>Harry Cassidy &copy; <span id="year">2026</span> ·
+         <a href="https://harrys.monster">harrys.monster</a></p>
+    </div>
+  </footer>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
